@@ -1,0 +1,49 @@
+
+ Web Slip 8 
+Q.1) Design an HTML form to accept two strings from the user. Write a PHP script for the following. 
+a. Find whether the small string appears at the start of the large string. 
+b. Find the position of the small string in the big string. 
+c. Compare both the string for first n characters, also the comparison should not be case sensitive. 
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>String Operations</title> 
+</head> 
+<body> 
+<form action="/TYPHP/exphp.php" method="post"> 
+Enter a small string: <input type="text" name="small_string"><br> 
+Enter a large string: <input type="text" name="large_string"><br> 
+<input type="submit" value="Submit"> 
+</form> 
+</body> 
+</html> 
+<?php 
+if ($_SERVER['REQUEST_METHOD'] == 'POST'){ 
+$small_string = $_POST['small_string']; 
+$large_string = $_POST['large_string']; 
+// a. Check if small string appears at the start of the large string 
+$starts_with = stripos($large_string, $small_string) === 0; 
+// b. Find the position of the small string in the big string 
+$position = stripos($large_string, $small_string); 
+// c. Compare first n characters (let's assume n=5) 
+$n = 5; 
+$first_n_comparison = strncasecmp($small_string, $large_string, $n) === 0; 
+echo "<p>a. Small string appears at the start of the large string: " . 
+($starts_with ? 'Yes' : 'No') . "</p>"; 
+echo "<p>b. Position of small string in the big string: " . ($position !== 
+false ? $position : 'Not found') . "</p>"; 
+echo "<p>c. Comparison of first $n characters (case-insensitive): " . 
+($first_n_comparison ? 'Match' : 'No match') . "</p>"; 
+} 
+?> 
+Q.2) Write a program in python to perform following task : [15] 
+Standardizing Data (transform them into a standard Gaussian distribution with a mean of 0 and a standard deviation of 1) (Use winequality-red.csv) 
+import pandas as pd 
+from sklearn.preprocessing import StandardScaler 
+df = pd.read_csv('winequality-red.csv', delimiter=';') 
+scaler = StandardScaler() 
+df_std = scaler.fit_transform(df) 
+df_std = pd.DataFrame(df_std, columns=df.columns) 
+print(df_std.head())
