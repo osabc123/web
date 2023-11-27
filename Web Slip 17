@@ -1,0 +1,65 @@
+
+ Web Slip 17 
+Q.1) Write a PHP script to sort the following associative array : array(“Sagar"=>"31","Vicky"=>"41","Leena"=>"39","Ramesh"=>"40") in 
+a) ascending order sort by Value 
+b) ascending order sort by Key 
+c) descending order sorting by Value 
+d) descending order sorting by Key 
+<?php 
+// Given associative array 
+$studentMarks = array("Sagar" => "31", "Vicky" => "41", "Leena" => "39", "Ramesh" => "40"); 
+// a) Ascending order sort by Value 
+asort($studentMarks); 
+echo "a) Ascending order sort by Value:<br>"; 
+printArray($studentMarks); 
+// b) Ascending order sort by Key 
+ksort($studentMarks); 
+echo "<br>b) Ascending order sort by Key:<br>"; 
+printArray($studentMarks); 
+// c) Descending order sort by Value 
+arsort($studentMarks); 
+echo "<br>c) Descending order sorting by Value:<br>"; 
+printArray($studentMarks); 
+// d) Descending order sort by Key 
+krsort($studentMarks); 
+echo "<br>d) Descending order sorting by Key:<br>"; 
+printArray($studentMarks); 
+// Function to print associative array 
+function printArray($array) 
+{ 
+echo "<pre>"; 
+print_r($array); 
+echo "</pre>"; 
+} 
+?> 
+Q.2 A) Write a Python program to draw scatter plots to compare two features of the iris dataset 
+import pandas as pd 
+import matplotlib.pyplot as plt 
+# Load the data into a pandas dataframe 
+df = pd.read_csv('iris.csv') 
+# Create scatter plots to compare petal length and petal width 
+plt.scatter(df['petal_length'], df['petal_width']) 
+plt.xlabel('Petal Length') 
+plt.ylabel('Petal Width') 
+plt.title('Relationship between Petal Length and Petal Width') 
+plt.show() 
+# Create scatter plots to compare sepal length and sepal width 
+plt.scatter(df['sepal_length'], df['sepal_width']) 
+plt.xlabel('Sepal Length') 
+plt.ylabel('Sepal Width') 
+plt.title('Relationship between Sepal Length and Sepal Width') 
+plt.show() 
+Q.2 B) Write a Python program to create a data frame containing columns name, age , salary, department . Add 10 rows to the data frame. View the data frame. 
+import pandas as pd 
+import numpy as np 
+# Create a data frame containing column name, salary, department 
+df = pd.DataFrame(columns=['name', 'salary', 'department']) 
+for i in range(10): 
+name = f'Employee {i+1}' 
+salary = np.random.randint(1000, 5000) 
+department = np.random.choice(['Sales', 'Marketing', 'Finance', 'IT']) 
+df = df.append({'name': name, 'salary': salary, 'department':department},ignore_index=True) 
+if i % 2 == 0: 
+df=df.append({'name':name,'salary':np.nan,'department':department},ignore_indeTrue) 
+df.dropna(inplace=True) 
+print(df
