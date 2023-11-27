@@ -1,0 +1,99 @@
+
+ Web Slip 19 
+Q.1)Write a PHP script to accept 2 strings from the user, the first string should be a sentence and second can be a word. 
+a. Delete a small part from first string after accepting position and number of characters to remove. 
+b. Insert the given small string in the given big string at specified position without removing any characters from the big string. 
+c. Replace some characters/ words from given big string with the given small string at specified position. 
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>String Operations</title> 
+</head> 
+<body> 
+<h2>String Operations</h2> 
+<form method="post" action=""> 
+<label for="bigString">Enter a big string (sentence):</label> 
+<input type="text" name="bigString" required><br> 
+<label for="smallString">Enter a small string (word):</label> 
+<input type="text" name="smallString" required><br> 
+<label for="position">Enter position:</label> 
+<input type="number" name="position" required><br> 
+<label for="numChars">Enter number of characters to remove:</label> 
+<input type="number" name="numChars"><br> 
+<button type="submit" name="delete">Delete Part</button> 
+<button type="submit" name="insert">Insert at Position</button> 
+<button type="submit" name="replace">Replace at Position</button> 
+</form> 
+<?php 
+if (isset($_POST['delete'])) { 
+// Operation a: Delete a small part from the big string 
+$bigString = $_POST['bigString']; 
+$position = $_POST['position']; 
+$numChars = $_POST['numChars']; 
+$result = substr_replace($bigString, '', $position, $numChars); 
+echo "<p>Result after deleting part: $result</p>"; 
+} 
+if (isset($_POST['insert'])) { 
+// Operation b: Insert the small string at specified position 
+$bigString = $_POST['bigString']; 
+$smallString = $_POST['smallString']; 
+$position = $_POST['position']; 
+$result = substr_replace($bigString, $smallString, $position, 0); 
+echo "<p>Result after inserting at position: $result</p>"; 
+} 
+if (isset($_POST['replace'])) { 
+// Operation c: Replace characters/words from the big string at specified position 
+$bigString = $_POST['bigString']; 
+$smallString = $_POST['smallString']; 
+$position = $_POST['position']; 
+$result = substr_replace($bigString, $smallString, $position, strlen($smallString)); 
+echo "<p>Result after replacing at position: $result</p>"; 
+} 
+?> 
+</body> 
+</html> 
+Q.2) Write a Python program 
+1. To create a dataframe containing columns name, age and percentage. Add 10 rows to the dataframe. View the dataframe. 
+2. To print the shape, number of rows-columns, data types, feature names and the description of the data 
+3. To Add 5 rows with duplicate values and missing values. Add a column ‘remarks’ with empty values. Display the data. 
+import pandas as pd 
+import numpy as np 
+# Create a dataframe containing columns name, age and percentage 
+df = pd.DataFrame({ 
+'Name': ['John', 'Jane', 'Bob', 'Alice', 'Mike', 'Mary', 'Tom', 'Sue', 'Bill', 
+'Liz'], 
+'Age': [20, 22, 21, 23, 22, 24, 19, 20, 21, 22], 
+'Percentage': [80, 90, 70, 85, 75, 95, 60, 75, 80, 90] 
+}) 
+# Add 10 rows to the dataframe 
+for i in range(10): 
+name = f'Employee {i+1}' 
+age = np.random.randint(20, 30) 
+percentage = np.random.randint(60, 100) 
+df = df.append({'Name': name, 'Age': age, 'Percentage': percentage}, 
+ignore_index=True) 
+# View the dataframe 
+print('Dataframe:') 
+print(df) 
+# Print the shape, number of rows-columns, data types, feature names and the 
+description of the data 
+print('\nShape of the data:') 
+print(df.shape) 
+print('\nNumber of Rows:', df.shape[0]) 
+print('Number of Columns:', df.shape[1]) 
+print('\nData Types:') 
+print(df.dtypes) 
+print('\nFeature Names:') 
+print(list(df.columns)) 
+df.describe() 
+for i in range(5): 
+name = f'Employee {i+11}' 
+age = np.nan if i % 2 == 0 else np.random.randint(20, 30) 
+percentage = np.random.randint(60, 100) 
+df = df.append({'Name': name, 'Age': age, 'Percentage': percentage, 'Remarks': 
+''}, ignore_index=True) 
+df = df.append(df.iloc[0:5], ignore_index=True) 
+print('\nData with duplicate values and missing values:') 
+print(df)
