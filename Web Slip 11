@@ -1,0 +1,15 @@
+
+ Web Slip 11 
+Q1) BOOTSTRAP 
+Q.2 A) Write a Python program to create a Pie plot to get the frequency of the three species of the Iris data (Use iris.csv) 
+import pandas as pd 
+import matplotlib.pyplot as plt 
+df = pd.read_csv('iris.csv') 
+species_freq = df['species'].value_counts() 
+plt.pie(species_freq, labels=species_freq.index, autopct='%1.1f%%') 
+plt.title('Frequency of the Three Species of the Iris Data') 
+plt.show() 
+B) Write a Python program to view basic statistical details of the data.(Use wineequality-red.csv) 
+df = pd.read_csv('winequality-red.csv', delimiter=';') 
+print(df.head()) 
+print(df.describe())
