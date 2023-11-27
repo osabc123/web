@@ -1,0 +1,48 @@
+
+ Web Slip 21 
+Q.1) Create an array of 15 high temperatures, approximating the weather for a spring month, then find the average high temp, the five warmest high temps Display the result on the browser. 
+<!DOCTYPE html> 
+<html> 
+<head> 
+<title>Spring Weather</title> 
+</head> 
+<body> 
+<?php 
+// Create an array of 15 high temperatures 
+$highTemperatures = array(18, 20, 22, 25, 28, 26, 23, 21, 24, 27, 30, 29, 31, 32, 28); 
+// Calculate the average high temperature 
+$averageTemperature = array_sum($highTemperatures) / count($highTemperatures); 
+// Find the five warmest high temperatures 
+$warmestTemperatures = array_slice($highTemperatures, -5); 
+// Display the results 
+echo "<h2>Spring Weather Statistics</h2>"; 
+echo "<p>Average High Temperature: " . round($averageTemperature, 2) . " °C</p>"; 
+echo "<p>Five Warmest High Temperatures: " . implode(', ', $warmestTemperatures) . " °C</p>"; 
+?> 
+</body> 
+</html> 
+Q.2 A) Import dataset “iris.csv”. Write a Python program to create a Bar plot to get the frequency of the three species of the Iris data. 
+import pandas as pd 
+import matplotlib.pyplot as plt 
+# Load the data into a pandas dataframe 
+df = pd.read_csv('iris.csv') 
+# Create a bar plot to get the frequency of the three species of the Iris data 
+plt.bar(df['species'].unique(), df['species'].value_counts()) 
+plt.xlabel('Species') 
+plt.ylabel('Frequency') 
+plt.title('Frequency of the Three Species of the Iris Data') 
+plt.show() 
+Q.2 B)Write a Python program to create a histogram of the three species of the Iris data 
+import pandas as pd 
+import matplotlib.pyplot as plt 
+# Load the data into a pandas dataframe 
+df = pd.read_csv('iris.csv') 
+# Create a histogram of the three species of the Iris data 
+plt.hist([df[df['species'] == 'setosa']['petal_length'], df[df['species'] == 
+'versicolor']['petal_length'], df[df['species'] == 'virginica']['petal_length']], 
+bins=10, alpha=0.5, label=['setosa', 'versicolor', 'virginica']) 
+plt.xlabel('Petal Length') 
+plt.ylabel('Frequency') 
+plt.title('Histogram of the Three Species of the Iris Data') 
+plt.legend() 
+plt.show()
