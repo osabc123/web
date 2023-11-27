@@ -1,0 +1,97 @@
+
+ Web Slip 18 
+Q.1) Write a menu driven program to perform the following operations on an associative array 
+a. Reverse the order of each element’s key-value pair. 
+b. Traverse the element in an array in random order. 
+c. Convert the array elements into individual variables. 
+d. Display the elements of an array along with key. 
+<?php 
+// Given associative array 
+$associativeArray = array("Sagar" => "31", "Vicky" => "41", "Leena" => "39", "Ramesh" => "40"); 
+// Function to reverse the order of each element’s key-value pair 
+function reverseKeyValue($array) 
+{ 
+$reversedArray = array(); 
+foreach ($array as $key => $value) { 
+$reversedArray[$value] = $key; 
+} 
+return $reversedArray; 
+} 
+// Function to traverse the elements in an array in random order 
+function traverseRandomOrder($array) 
+{ 
+$keys = array_keys($array); 
+shuffle($keys); 
+$randomArray = array(); 
+foreach ($keys as $key) { 
+$randomArray[$key] = $array[$key]; 
+} 
+return $randomArray; 
+} 
+// Function to convert the array elements into individual variables 
+function convertToVariables($array) 
+{ 
+extract($array); 
+// Variables will be created with the keys of the array 
+echo "Variables created: \$Sagar, \$Vicky, \$Leena, \$Ramesh<br>"; 
+} 
+// Function to display the elements of an array along with key 
+function displayWithKey($array) 
+{ 
+echo "Elements of the array along with key:<br>"; 
+foreach ($array as $key => $value) { 
+echo "Key: $key, Value: $value<br>"; 
+} 
+} 
+// Menu-driven program 
+echo "Menu:\n"; 
+echo "1. Reverse the order of each element’s key-value pair.\n"; 
+echo "2. Traverse the elements in an array in random order.\n"; 
+echo "3. Convert the array elements into individual variables.\n"; 
+echo "4. Display the elements of an array along with key.\n"; 
+$choice = readline("Enter your choice (1/2/3/4): "); 
+switch ($choice) { 
+case 1: 
+$result = reverseKeyValue($associativeArray); 
+print_r($result); 
+break; 
+case 2: 
+$result = traverseRandomOrder($associativeArray); 
+print_r($result); 
+break; 
+case 3: 
+convertToVariables($associativeArray); 
+break; 
+case 4: 
+displayWithKey($associativeArray); 
+break; 
+default: 
+echo "Invalid choice!"; 
+break; 
+} 
+?> 
+
+Q.2 A) Write a Python program to create box plots to see how each feature i.e. Sepal Length, Sepal Width, Petal Length, Petal Width are distributed across the three species. (Use iris.csv dataset) 
+import pandas as pd 
+import matplotlib.pyplot as plt 
+import seaborn as sns 
+sns.boxplot(x='Species', y='SepalLengthCm', data=df) 
+plt.title('Sepal Length') 
+plt.show() 
+sns.boxplot(x='Species', y='SepalWidthCm', data=df) 
+plt.title('Sepal Width') 
+plt.show() 
+sns.boxplot(x='Species', y='PetalLengthCm', data=df) 
+plt.title('Petal Length') 
+plt.show() 
+sns.boxplot(x='Species', y='PetalWidthCm', data=df) 
+plt.title('Petal Width') 
+plt.show() 
+Q.2 B) Use the heights and weights dataset and load the dataset from a given csv file into a dataframe. Print the first, last 5 rows and random 10 row 
+df = pd.read_csv('weight-height.csv') 
+print("First row:") 
+print(df.head(1)) 
+print("\nLast 5 rows:") 
+print(df.tail(5)) 
+print("\n10 random rows:") 
+print(df.sample(10))
