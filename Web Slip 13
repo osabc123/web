@@ -1,0 +1,63 @@
+
+ Web Slip 13 
+Q.1) Write a PHP script to create a chess board using CSS on table cells. 
+<!DOCTYPE html> 
+<html> 
+<head> 
+<style> 
+body { 
+font-family: Arial, sans-serif; 
+} 
+table { 
+border-collapse: collapse; 
+margin: 20px auto; 
+} 
+td { 
+width: 50px; 
+height: 50px; 
+text-align: center; 
+} 
+.white { 
+background-color: black; 
+} 
+.black { 
+background-color: white; 
+} 
+</style> 
+<title>Chess Board</title> 
+</head> 
+<body> 
+<?php 
+function generateChessBoard() { 
+echo '<table>'; 
+for ($row = 1; $row <= 8; $row++) { 
+echo '<tr>'; 
+for ($col = 1; $col <= 8; $col++) { 
+$class = ($row + $col) % 2 == 0 ? 'white' : 'black'; 
+echo '<td class="' . $class . '"></td>'; 
+} 
+echo '</tr>'; 
+} 
+echo '</table>'; 
+} 
+generateChessBoard(); 
+?> 
+</body> 
+</html> 
+Q.2 A) Write a Python program to create a graph to find relationship between the petal length and petal width.(Use iris.csv dataset) 
+import pandas as pd 
+import matplotlib.pyplot as plt 
+df = pd.read_csv('iris.csv') 
+plt.scatter(df['petal_length'], df['petal_width']) 
+plt.xlabel('Petal Length') 
+plt.ylabel('Petal Width') 
+plt.title('Relationship between Petal Length and Petal Width') 
+plt.show() 
+Q.2 B) Write a Python program to find the maximum and minimum value of a given flattened 
+array. 
+import numpy as np 
+arr = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]]).flatten() 
+max_value = np.amax(arr) 
+min_value = np.amin(arr) 
+print(f"The maximum value of the flattened array is {max_value}.") 
+print(f"The minimum value of the flattened array is {min_value}.")
