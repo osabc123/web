@@ -1,0 +1,62 @@
+
+ Web Slip 7 
+Design HTML 5 Page Using CSS Which Displays the following Navigation Bar 
+<!--Slip 7 --> 
+<html> 
+<head> 
+<style> 
+#ul-nb{ 
+list-style:none; 
+margin:0px; 
+padding:0px; 
+} 
+#ul-nb li{ 
+float:left; 
+padding: 10px; 
+background: rgb(97, 95, 95); 
+text-align: center; 
+} 
+#yu{ 
+list-style:none; 
+margin:0px; 
+padding:0px; 
+} 
+#yu li{ 
+float:left; 
+padding: 10px; 
+background: grey; 
+text-align: center; 
+} 
+</style> 
+<title>Navbar</title> 
+</head> 
+<body> 
+<ul id="ul-nb"> 
+<li><b>Home</b></li> 
+</ul> 
+<ul id="yu"> 
+<li><a href="#">Java</a></li> 
+<li><a href="#">HTML</a></li> 
+<li><a href="#">CSS</a></li> 
+</ul> 
+</body> 
+</html> 
+Q.2) Write a Python program to perform the following tasks : 
+a. Apply OneHot coding on Country column. 
+b. Apply Label encoding on purchased column 
+(Data.csv have two categorical column the country column, and the purchased column). 
+a] 
+import pandas as pd 
+from sklearn.preprocessing import LabelEncoder 
+from sklearn.preprocessing import OneHotEncoder 
+df = pd.read_csv('Data.csv') 
+onehot_encoder = OneHotEncoder(sparse=False) 
+onehot_encoded = onehot_encoder.fit_transform(df[['Country']]) 
+onehot_encoded_df = pd.DataFrame(onehot_encoded, 
+columns=onehot_encoder.get_feature_names(['Country'])) 
+df = pd.concat([df, onehot_encoded_df], axis=1) 
+df.drop(['Country'], axis=1, inplace=True) 
+b] 
+label_encoder = LabelEncoder() 
+df['Purchased'] = label_encoder.fit_transform(df['Purchased']) 
+print(df)
