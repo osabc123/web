@@ -1,0 +1,76 @@
+
+ Web Slip 9 
+Q.1) Write a PHP script for the following: Design a form having a text box and a drop down list containing any 3 separators(e.g. #, |, %, @, ! or comma) accept a strings from the user and also a separator. 
+a. Split the string into separate words using the given separator. 
+b. Replace all the occurrences of separator in the given string with some other separator. 
+c. Find the last word in the given string. 
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>String Operations</title> 
+</head> 
+<body> 
+<form action="/TYPHP/WEBSlips/saperator.php" method="post"> 
+<label for="inputString">Enter a String:</label> 
+<input type="text" id="inputString" name="inputString" required> 
+<label for="separator">Choose a Separator:</label> 
+<select id="separator" name="separator" required> 
+<option value="#">#</option> 
+<option value="|">|</option> 
+<option value="%">%</option> 
+</select> 
+<button type="submit">Submit</button> 
+</form> 
+</body> 
+</html> 
+<?php 
+if ($_SERVER["REQUEST_METHOD"] == "POST") { 
+$inputString = $_POST["inputString"]; 
+$selectedSeparator = $_POST["separator"]; 
+$wordsArray = explode($selectedSeparator, $inputString); 
+$newSeparator = '@'; 
+$modifiedString = str_replace($selectedSeparator, $newSeparator, $inputString); 
+$lastWord = end($wordsArray); 
+echo "<h3>Results:</h3>"; 
+echo "<p>Original String: $inputString</p>"; 
+echo "<p>Words after splitting using '$selectedSeparator': " . implode(', ', $wordsArray) . "</p>"; 
+echo "<p>Modified String after replacing '$selectedSeparator' with '$newSeparator': $modifiedString</p>"; 
+echo "<p>Last Word in the String: $lastWord</p>"; 
+} 
+?> 
+Q.2 A) Generate a random array of 50 integers and display them using a line chart, scatter plot. Apply appropriate color, labels and styling options. [5] 
+import numpy as np 
+import matplotlib.pyplot as plt 
+randnums = np.random.randint(0, 100, 50) 
+plt.plot(randnums, color='red') 
+plt.title('Line Chart of Random Integers') 
+plt.xlabel('Index') 
+plt.ylabel('Value') 
+plt.show() 
+plt.scatter(range(len(randnums)), randnums, color='green') 
+plt.title('Scatter Plot of Random Integers') 
+plt.xlabel('Index') 
+plt.ylabel('Value') 
+plt.show() 
+Q.2 B) Create two lists, one representing subject names and the other representing marks obtained in those subjects. Display the data in a pie chart. [5] 
+import matplotlib.pyplot as plt 
+subjects = ['Math', 'Science', 'English', 'History'] 
+marks = [80, 90, 70, 85] 
+plt.pie(marks, labels=subjects, autopct='%1.1f%%') 
+plt.title('Marks Obtained in Different Subjects') 
+plt.show() 
+Q.2 C) Write a program in python to perform following task (Use winequality-red.csv ) 
+Import Dataset and do the followings: 
+a) Describing the dataset 
+b) Shape of the dataset 
+c) Display first 3 rows from dataset 
+import pandas as pd 
+df = pd.read_csv('winequality-red.csv', delimiter=';') 
+print('Description of the dataset:') 
+print(df.describe()) 
+print('\nShape of the dataset:') 
+print(df.shape) 
+print('\nFirst 3 rows from the dataset:') 
+print(df.head(3))
