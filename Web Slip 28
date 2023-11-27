@@ -1,0 +1,104 @@
+
+ Web Slip 28 
+Q.1) Write a program to read a flat file “student.dat”, calculate the percentage and display the data from file in tabular format.(Student.dat file contains rollno, name, OS, WT, DS, Python, Java, CN ) [15] 
+<!DOCTYPE html> 
+<html> 
+<head> 
+<title>Student Data</title> 
+<style> 
+table { 
+border-collapse: collapse; 
+width: 100%; 
+} 
+th, td { 
+border: 1px solid #ddd; 
+padding: 8px; 
+text-align: left; 
+} 
+th { 
+background-color: #f2f2f2; 
+} 
+</style> 
+</head> 
+<body> 
+<h2>Student Data</h2> 
+<?php 
+$filename = 'student.dat'; 
+// Check if the file exists 
+if (!file_exists($filename)) { 
+echo "<p>Error: The file '$filename' does not exist.</p>"; 
+} else { 
+// Read data from the file 
+$fileContent = file($filename, FILE_IGNORE_NEW_LINES); 
+if (empty($fileContent)) { 
+echo "<p>No data found in the file.</p>"; 
+} else { 
+// Display data in tabular format 
+echo "<table>"; 
+echo "<tr><th>Roll No</th><th>Name</th><th>OS</th><th>WT</th><th>DS</th><th>Python</th><th>Java</th><th>CN</th><th>Percentage</th></tr>"; 
+foreach ($fileContent as $line) { 
+$data = explode(',', $line); 
+// Calculate percentage 
+$totalMarks = array_sum(array_slice($data, 2)); 
+$percentage = ($totalMarks / 500) * 100; 
+echo "<tr>"; 
+echo "<td>{$data[0]}</td>"; 
+echo "<td>{$data[1]}</td>"; 
+echo "<td>{$data[2]}</td>"; 
+echo "<td>{$data[3]}</td>"; 
+echo "<td>{$data[4]}</td>"; 
+echo "<td>{$data[5]}</td>"; 
+echo "<td>{$data[6]}</td>"; 
+echo "<td>{$data[7]}</td>"; 
+echo "<td>{$percentage}%</td>"; 
+echo "</tr>"; 
+} 
+echo "</table>"; 
+} 
+} 
+?> 
+</body> 
+</html> 
+Q.2) Write a Python program 
+1. To create a dataframe containing columns name, age and percentage. Add 10 rows to the dataframe. View the dataframe. 
+2. To print the shape, number of rows-columns, data types, feature names and the description of the data. 
+3. To view basic statistical details of the data. 
+4. To Add 5 rows with duplicate values and missing values. Add a column ‘remarks’ with empty values. Display the data. 
+import pandas as pd 
+import numpy as np 
+# Create a dataframe containing columns name, age and percentage 
+df = pd.DataFrame({ 
+'Name': ['John', 'Jane', 'Bob', 'Alice', 'Mike', 'Mary', 'Tom', 'Sue', 'Bill', 
+'Liz'], 
+'Age': [20, 22, 21, 23, 22, 24, 19, 20, 21, 22], 
+'Percentage': [80, 90, 70, 85, 75, 95, 60, 75, 80, 90] 
+}) 
+# Add 10 rows to the dataframe 
+for i in range(10): 
+name = f'Employee {i+1}' 
+age = np.random.randint(20, 30) 
+percentage = np.random.randint(60, 100) 
+df = df.append({'Name': name, 'Age': age, 'Percentage': percentage}, 
+ignore_index=True) 
+# View the dataframe 
+print('Dataframe:') 
+print(df) 
+# Print the shape, number of rows-columns, data types, feature names and the description of the data 
+print('\nShape of the data:') 
+print(df.shape) 
+print('\nNumber of Rows:', df.shape[0]) 
+print('Number of Columns:', df.shape[1]) 
+print('\nData Types:') 
+print(df.dtypes) 
+print('\nFeature Names:') 
+print(list(df.columns)) 
+df.describe() 
+for i in range(5): 
+name = f'Employee {i+11}' 
+age = np.nan if i % 2 == 0 else np.random.randint(20, 30) 
+percentage = np.random.randint(60, 100) 
+df = df.append({'Name': name, 'Age': age, 'Percentage': percentage, 'Remarks': 
+''}, ignore_index=True) 
+df = df.append(df.iloc[0:5], ignore_index=True) 
+print('\nData with duplicate values and missing values:') 
+print(df)
