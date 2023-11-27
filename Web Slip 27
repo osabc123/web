@@ -1,0 +1,54 @@
+
+ Web Slip 27 
+Q.1) Write a PHP program to read two file names from user and copy the content of first file into second file. [15] 
+<!DOCTYPE html> 
+<html > 
+<head> 
+<title>Copy File Content</title> 
+</head> 
+<body> 
+<h2>Copy File Content</h2> 
+<form method="post" action=""> 
+<label for="sourceFile">Enter the name of the source file:</label> 
+<input type="text" name="sourceFile" required><br> 
+<label for="destinationFile">Enter the name of the destination file:</label> 
+<input type="text" name="destinationFile" required><br> 
+<button type="submit" name="copy">Copy Content</button> 
+</form> 
+<?php 
+if (isset($_POST['copy'])) { 
+// Get file names from the form 
+$sourceFile = $_POST['sourceFile']; 
+$destinationFile = $_POST['destinationFile']; 
+// Check if the source file exists 
+if (!file_exists($sourceFile)) { 
+echo "<p>Error: The source file '$sourceFile' does not exist.</p>"; 
+} else { 
+// Read content from the source file 
+$contentToCopy = file_get_contents($sourceFile); 
+// Write content to the destination file 
+file_put_contents($destinationFile, $contentToCopy); 
+echo "<p>Content from '$sourceFile' has been successfully copied to '$destinationFile'.</p>"; 
+} 
+} 
+?> 
+</body> 
+</html> 
+Q.2) Create a dataset data.csv having two categorical column (the country column, and the purchased column). [15] 
+a. Apply OneHot coding on Country column. 
+b. Apply Label encoding on purchased column 
+a] 
+import pandas as pd 
+from sklearn.preprocessing import LabelEncoder 
+from sklearn.preprocessing import OneHotEncoder 
+df = pd.read_csv('Data.csv') 
+onehot_encoder = OneHotEncoder(sparse=False) 
+onehot_encoded = onehot_encoder.fit_transform(df[['Country']]) 
+onehot_encoded_df = pd.DataFrame(onehot_encoded, 
+columns=onehot_encoder.get_feature_names(['Country'])) 
+df = pd.concat([df, onehot_encoded_df], axis=1) 
+df.drop(['Country'], axis=1, inplace=True) 
+b] 
+label_encoder = LabelEncoder() 
+df['Purchased'] = label_encoder.fit_transform(df['Purchased']) 
+print(df)
