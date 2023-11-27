@@ -1,0 +1,66 @@
+
+ Web Slip 2 
+Q.1) Create HTML5 page with following specifications [15] 
+i) Title should be about your City. 
+ii) Color the background by Pink color. 
+iii) Place your city name at the top of page in large text and in blue color. 
+iv) Add names of the landmarks in your city, each in different color, style and font 
+v) Add any image at the bottom. (Use inline CSS to format the web page) 
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>Saswad</title> 
+<style> 
+body { 
+background-color: pink; 
+font-family: Arial, sans-serif; 
+text-align: center; 
+} 
+h1 { 
+color: blue; 
+} 
+#image { 
+max-width: 100%; 
+height: auto; 
+margin-top: 20px; 
+} 
+</style> 
+</head> 
+<body> 
+<h1>Saswad</h1> 
+<div class="landmark" style="color: red;">Sangameshwar</div> 
+<div class="landmark" style="color: green; font-style: italic;">Vateshwar</div> 
+<div class="landmark" style="color: purple; font-family: 'Courier New', 
+monospace;">Wagh dongar</div> 
+<div class="landmark" style="color: orange; text-decoration: 
+underline;">Waghire College Saswad</div> 
+<div class="landmark" style="color: brown; font-weight: normal;">Anand Plaza</div> 
+<img id="image" src="123.jpg" alt="City Image"> 
+</body> 
+</html> 
+Q.2 A) Write a Python program for Handling Missing Value. Replace missing value of salary, age column with mean of that column.(Use Data.csv file). 
+import pandas as pd 
+df = pd.read_csv('Data.csv') 
+df['salary'].fillna(df['salary'].mean(), inplace=True) 
+df['age'].fillna(df['age'].mean(), inplace=True) 
+print(df) 
+Q.2 B) Write a Python program to generate a line plot of name Vs salary 
+import matplotlib.pyplot as plt 
+df = pd.read_csv('Data.csv') 
+plt.plot(df['name'], df['salary']) 
+plt.xlabel('Name') 
+plt.ylabel('Salary') 
+plt.title('Line Plot of Name Vs Salary') 
+plt.show() 
+Q.2 C) Download the heights and weights dataset and load the dataset froma given csv file into a dataframe. Print the first, last 10 rows and random 20 rows also display shape of the dataset. 
+df = pd.read_csv('weight-height.csv') 
+print("First 5 rows:") 
+print(df.head()) 
+print("\nLast 10 rows:") 
+print(df.tail(10)) 
+print("\n20 random rows:") 
+print(df.sample(20)) 
+print("\nShape of the data:") 
+print(df.shape)
