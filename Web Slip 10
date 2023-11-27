@@ -1,0 +1,66 @@
+
+ Web Slip 10 
+Q.1) Write a script to accept two integers(Use html form having 2 textboxes). 
+Write a PHP script to, 
+a. Find mod of the two numbers. 
+b. Find the power of first number raised to the second. 
+c. Find the sum of first n numbers (considering first number as n) 
+d. Find the factorial of second number. 
+(Write separate function for each of the above operations.) 
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<title>Math Operations</title> 
+</head> 
+<body> 
+<form action="/TYPHP/WEBSlips/2int.php" method="post"> 
+<label for="num1">Enter the first number:</label> 
+<input type="text" id="num1" name="num1" required> 
+<label for="num2">Enter the second number:</label> 
+<input type="text" id="num2" name="num2" required> 
+<button type="submit">Submit</button> 
+</form> 
+</body> 
+</html> 
+<?php 
+if ($_SERVER["REQUEST_METHOD"] == "POST") { 
+$num1 = $_POST["num1"]; 
+$num2 = $_POST["num2"]; 
+function findModulus($a, $b) { 
+return $a % $b; 
+} 
+function findPower($a, $b) { 
+return pow($a, $b); 
+} 
+function findSum($n) { 
+return ($n * ($n + 1)) / 2; 
+} 
+function findFactorial($num) { 
+if ($num == 0 || $num == 1) { 
+return 1; 
+} else { 
+return $num * findFactorial($num - 1); 
+} 
+} 
+echo "<h3>Results:</h3>"; 
+echo "<p>Modulus of $num1 and $num2: " . findModulus($num1, $num2) . "</p>"; 
+echo "<p>Power of $num1 raised to $num2: " . findPower($num1, $num2) . "</p>"; 
+echo "<p>Sum of first $num1 numbers: " . findSum($num1) . "</p>"; 
+echo "<p>Factorial of $num2: " . findFactorial($num2) . "</p>"; 
+} 
+?> 
+Q.2 A) Write a python program to Display column-wise mean, and median for SOCR-HeightWeight dataset. 
+import pandas as pd 
+df = pd.read_csv('SOCR-HeightWeight.csv') 
+print('Column-wise mean:') 
+print(df.mean()) 
+print('\nColumn-wise median:') 
+print(df.median()) 
+Q.2 B) Write a python program to compute sum of Manhattan distance between all pairs of points. 
+import numpy as np 
+points = np.random.randint(0, 100, size=(10, 2)) 
+sum_distance = 0 
+for i in range(len(points)): 
+for j in range(i+1, len(points)): 
+sum_distance += abs(points[i][0] - points[j][0]) + abs(points[i][1] -points[j][1]) 
+print(f"The sum of Manhattan distance between all pairs of points is{sum_distance}.")
