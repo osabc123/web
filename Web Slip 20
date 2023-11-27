@@ -1,0 +1,89 @@
+
+ Web Slip 20 
+Q.1) Write a menu driven program to perform the following operations on associative arrays: 
+a) Split an array into chunks 
+b) Sort the array by values without changing the keys. 
+c) Filter the even elements from an array. 
+<?php 
+// Given associative array 
+$associativeArray = array("Sagar" => 31, "Vicky" => 41, "Leena" => 39, "Ramesh" => 40, "John" => 25); 
+// Function to split an array into chunks 
+function splitIntoChunks($array, $chunkSize) 
+{ 
+$chunks = array_chunk($array, $chunkSize, true); 
+return $chunks; 
+} 
+// Function to sort the array by values without changing the keys 
+function sortByValues($array) 
+{ 
+asort($array); 
+return $array; 
+} 
+// Function to filter the even elements from an array 
+function filterEvenElements($array) 
+{ 
+$evenElements = array_filter($array, function ($value) { 
+return $value % 2 == 0; 
+}); 
+return $evenElements; 
+} 
+// Menu-driven program 
+echo "Menu:\n"; 
+echo "1. Split an array into chunks.\n"; 
+echo "2. Sort the array by values without changing the keys.\n"; 
+echo "3. Filter the even elements from an array.\n"; 
+$choice = readline("Enter your choice (1/2/3): "); 
+switch ($choice) { 
+case 1: 
+$chunkSize = readline("Enter the chunk size: "); 
+$result = splitIntoChunks($associativeArray, $chunkSize); 
+print_r($result); 
+break; 
+case 2: 
+$result = sortByValues($associativeArray); 
+print_r($result); 
+break; 
+case 3: 
+$result = filterEvenElements($associativeArray); 
+print_r($result); 
+break; 
+default: 
+echo "Invalid choice!"; 
+break; 
+} 
+?> 
+
+Q.2 A) Generate a random array of 50 integers and display them using a line chart, scatter plot, histogram and box plot. Apply appropriate color, labels and styling options. 
+import numpy as np 
+import matplotlib.pyplot as plt 
+randnums = np.random.randint(0, 100, 50) 
+plt.plot(randnums, color='red') 
+plt.title('Line Chart of Random Integers') 
+plt.xlabel('Index') 
+plt.ylabel('Value') 
+plt.show() 
+plt.scatter(range(len(randnums)), randnums, color='green') 
+plt.title('Scatter Plot of Random Integers') 
+plt.xlabel('Index') 
+plt.ylabel('Value') 
+plt.show() 
+plt.hist(randnums, color='blue', bins=10) 
+plt.title('Histogram of Random Integers') 
+plt.xlabel('Value') 
+plt.ylabel('Frequency') 
+plt.show() 
+plt.boxplot(randnums, vert=False) 
+plt.title('Box Plot of Random Integers') 
+plt.xlabel('Value') 
+plt.show() 
+Q.2 B) Add two outliers to the above data and display the box plot. 
+import numpy as np 
+import matplotlib.pyplot as plt 
+# Generate a random array of 50 integers 
+arr = np.random.randint(0, 100, 50) 
+# Add two outliers to the above data 
+arr = np.append(arr, [150, 200]) 
+# Display the box plot 
+plt.boxplot(arr) 
+plt.title('Box Plot of Random Array with Outliers') 
+plt.show()
