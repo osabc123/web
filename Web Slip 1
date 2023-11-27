@@ -1,0 +1,49 @@
+
+ Web Slip 1 
+Q.1) Write the HTML code for generating the form as shown below. Apply the internal CSS to following form to change the font size of the heading to 6pt and change the color to red and also change the background color to yellow. 
+<!--Slip 1 --> 
+<html> 
+<head> 
+<title>Form 1</title> 
+</head> 
+<body bgcolor="yellow"> 
+<center> 
+<h1 style="font-size:6pt;color:red"><u>Project Management</u></h1> 
+<Form action="stringform.php"> 
+Project name: 
+<input type="text" placeholder="Project name"> 
+<br><br> 
+Assigned to: 
+<input type="text" placeholder="Er Merry Petenson"> 
+<br><br> 
+Start date: 
+<input type="date"> 
+<br><br> 
+End date: 
+<input type="date"> 
+<br><br> 
+Priority: 
+<input type="radio">High 
+<input type="radio">Average 
+<input type="radio">Low 
+<br><br> 
+Description:<Textarea></Textarea> 
+<br><br> 
+<Input type="Submit" value="Submit"> 
+<input type="Reset" value="Clear"> 
+</form> 
+</center> 
+</body> 
+</html> 
+Q.2 A) Write a Python program to create a Pie plot to get the frequency of the three species of the Iris data (Use iris.csv) 
+import pandas as pd 
+import matplotlib.pyplot as plt 
+df = pd.read_csv('iris.csv') 
+species_freq = df['species'].value_counts() 
+plt.pie(species_freq, labels=species_freq.index, autopct='%1.1f%%') 
+plt.title('Frequency of the Three Species of the Iris Data') 
+plt.show() 
+B) Write a Python program to view basic statistical details of the data.(Use wineequality-red.csv) 
+df = pd.read_csv('winequality-red.csv', delimiter=';') 
+print(df.head()) 
+print(df.describe())
