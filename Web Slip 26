@@ -1,0 +1,33 @@
+
+ Web Slip 26 
+Q.1)Consider the following entities and their relationship. [15] 
+Doctor ( doc_no, dname, address ,city ,area) 
+Hospital (hosp_no, hname, hcity) 
+Doctor-Hospital related with many-one relationship. 
+Create a RDB in 3NF for above and solve the following. 
+Using above database write a script in PHP to print the Doctor visiting to the Hospital in tabular format. Accept Hospital name from user. 
+Q.2 A) Generate a random array of 50 integers and display them using a line chart, scatter plot, histogram and box plot. Apply appropriate color, labels and styling options. [10] 
+import numpy as np 
+import matplotlib.pyplot as plt 
+randnums = np.random.randint(0, 100, 50) 
+plt.plot(randnums, color='red') 
+plt.title('Line Chart of Random Integers') 
+plt.xlabel('Index') 
+plt.ylabel('Value') 
+plt.show() 
+plt.scatter(range(len(randnums)), randnums, color='green') 
+plt.title('Scatter Plot of Random Integers') 
+plt.xlabel('Index') 
+plt.ylabel('Value') 
+plt.show() 
+2.Create two lists, one representing subject names and the other representing marks obtained in those subjects. Display the data in bar chart. 
+import matplotlib.pyplot as plt 
+# Create two lists 
+subjects = ['Math', 'Science', 'English', 'History'] 
+marks = [80, 90, 70, 85] 
+# Create a bar chart 
+plt.bar(subjects, marks) 
+plt.xlabel('Subjects') 
+plt.ylabel('Marks') 
+plt.title('Marks Obtained in Different Subjects') 
+plt.show()
