@@ -1,0 +1,12 @@
+
+ Web Slip 14 
+Q.1) Create a container add row inside it and add 3 columns inside row using BootStrap. [15] 
+Q. 2 A) Write a Python NumPy program to compute the weighted average along the specified axis of a given flattened array. 
+import numpy as np 
+arr = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]]).flatten() 
+weights = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9]) 
+weighted_avg = np.average(arr, weights=weights) 
+print(f"The weighted average along the specified axis of the flattened array is{weighted_avg}.") 
+Q. 2 B) Write a Python program to view basic statistical details of the data (Use advertising.csv) 
+df = pd.read_csv(‘advertising.csv’, delimiter=';') 
+print(df.describe())
