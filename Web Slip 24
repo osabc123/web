@@ -1,0 +1,61 @@
+
+ Web Slip 24 
+Q.1) Write a PHP program to read two file names from user and append content of first file into second file. [15] 
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>Append File Content</title> 
+</head> 
+<body> 
+<h2>Append File Content</h2> 
+<form method="post" action=""> 
+<label for="firstFile">Enter the name of the first file:</label> 
+<input type="text" name="firstFile" required><br> 
+<label for="secondFile">Enter the name of the second file:</label> 
+<input type="text" name="secondFile" required><br> 
+<button type="submit" name="append">Append Content</button> 
+</form> 
+<?php 
+if (isset($_POST['append'])) { 
+// Get file names from the form 
+$firstFile = $_POST['firstFile']; 
+$secondFile = $_POST['secondFile']; 
+// Check if the first file exists 
+if (!file_exists($firstFile)) { 
+echo "<p>Error: The first file '$firstFile' does not exist.</p>"; 
+} else { 
+// Read content from the first file 
+$contentToAppend = file_get_contents($firstFile); 
+// Append content to the second file 
+file_put_contents($secondFile, $contentToAppend, FILE_APPEND); 
+echo "<p>Content from '$firstFile' has been successfully appended to '$secondFile'.</p>"; 
+} 
+} 
+?> 
+</body> 
+</html> 
+Q.2 A) Import dataset “iris.csv”. Write a Python program to create a Bar plot to get the frequency of the three species of the Iris data. [10] 
+import pandas as pd 
+import matplotlib.pyplot as plt 
+# Load the data into a pandas dataframe 
+df = pd.read_csv('iris.csv') 
+# Create a bar plot to get the frequency of the three species of the Iris data 
+plt.bar(df['species'].unique(), df['species'].value_counts()) 
+plt.xlabel('Species') 
+plt.ylabel('Frequency') 
+plt.title('Frequency of the Three Species of the Iris Data') 
+plt.show() 
+Q.2 B) Write a Python program to create a histogram of the three species of the Iris data. 
+import pandas as pd 
+import matplotlib.pyplot as plt 
+# Load the data into a pandas dataframe 
+df = pd.read_csv('iris.csv') 
+# Create a histogram of the three species of the Iris data 
+plt.hist([df[df['species'] == 'setosa']['petal_length'], df[df['species'] == 'versicolor']['petal_length'], df[df['species'] =='virginica']['petal_length']], bins=10, alpha=0.5, label=['setosa', 'versicolor', 'virginica']) 
+plt.xlabel('Petal Length') 
+plt.ylabel('Frequency') 
+plt.title('Histogram of the Three Species of the Iris Data') 
+plt.legend() 
+plt.show()
