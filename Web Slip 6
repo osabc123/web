@@ -1,0 +1,27 @@
+
+ Web Slip 6 
+Q.1)BOOTSTRAP 
+Q.2 A) Write a Python program for Handling Missing Value. Replace missing value of salary, age column with mean of that column.(Use Data.csv file). 
+import pandas as pd 
+df = pd.read_csv('Data.csv') 
+df['salary'].fillna(df['salary'].mean(), inplace=True) 
+df['age'].fillna(df['age'].mean(), inplace=True) 
+print(df) 
+Q.2 B) Write a Python program to generate a line plot of name Vs salary 
+import matplotlib.pyplot as plt 
+df = pd.read_csv('Data.csv') 
+plt.plot(df['name'], df['salary']) 
+plt.xlabel('Name') 
+plt.ylabel('Salary') 
+plt.title('Line Plot of Name Vs Salary') 
+plt.show() 
+Q.2 C) Download the heights and weights dataset and load the dataset froma given csv file into a dataframe. Print the first, last 10 rows and random 20 rows also display shape of the dataset. 
+df = pd.read_csv('weight-height.csv') 
+print("First 5 rows:") 
+print(df.head()) 
+print("\nLast 10 rows:") 
+print(df.tail(10)) 
+print("\n20 random rows:") 
+print(df.sample(20)) 
+print("\nShape of the data:") 
+print(df.shape)
