@@ -1,0 +1,36 @@
+
+ Web Slip 3 
+Q.1) Write a program using html with following CSS specifications- 
+i. The background colour of the company name should be in green. 
+ii. The text colour of the company name should be red. 
+iii. The heading should be large –with font ''comic sans ms'' 
+iv. The description of the company should be displayed in blue color in a paragraph. 
+<!--Slip 3 --> 
+<html> 
+<head><title>ABc Company</title></head> 
+<body style="background-color:green"> 
+<font style="color:red;font-style:comic sans ms;font-size:50">ABc Company</font> 
+<br><br> 
+<p style="color:blue">This is the company description</p> 
+</body> 
+</html> 
+Q.2 A)Write a Python program to create box plots to see how each feature i.e. Sepal Length, Sepal Width, Petal Length, Petal Width are distributed across the three species. (Use iris.csv dataset) 
+import pandas as pd 
+import matplotlib.pyplot as plt 
+import seaborn as sns 
+sns.boxplot(x='Species', y='SepalLengthCm', data=df) 
+plt.title('Sepal Length') 
+plt.show() 
+sns.boxplot(x='Species', y='SepalWidthCm', data=df) 
+plt.title('Sepal Width') 
+plt.show() 
+sns.boxplot(x='Species', y='PetalLengthCm', data=df) 
+plt.title('Petal Length') 
+plt.show() 
+sns.boxplot(x='Species', y='PetalWidthCm', data=df) 
+plt.title('Petal Width') 
+plt.show() 
+Q.2 B) Write a Python program to view basic statistical details of the data (Use Heights and Weights Dataset) 
+df = pd.read_csv('weight-height.csv') 
+print(df.head()) 
+print(df.describe())
