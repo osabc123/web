@@ -1,0 +1,24 @@
+
+ Web Slip 29 
+Q.1) Consider the following entities and their relationships [15] 
+Event (eno , title , date ) 
+Committee ( cno , name, head , from_time ,to_time , status) 
+Event and Committee have many to many relationship. Write a php script to accept title of event and modify status committee as working. 
+Q.2) Create a dataset data.csv having two categorical column (the country column, and the purchased column). [15] 
+1. Apply OneHot coding on Country column. 
+2. Apply Label encoding on purchased column 
+A] 
+import pandas as pd 
+from sklearn.preprocessing import LabelEncoder 
+from sklearn.preprocessing import OneHotEncoder 
+df = pd.read_csv('Data.csv') 
+onehot_encoder = OneHotEncoder(sparse=False) 
+onehot_encoded = onehot_encoder.fit_transform(df[['Country']]) 
+onehot_encoded_df = pd.DataFrame(onehot_encoded, 
+columns=onehot_encoder.get_feature_names(['Country'])) 
+df = pd.concat([df, onehot_encoded_df], axis=1) 
+df.drop(['Country'], axis=1, inplace=True) 
+b] 
+label_encoder = LabelEncoder() 
+df['Purchased'] = label_encoder.fit_transform(df['Purchased']) 
+print(df)
