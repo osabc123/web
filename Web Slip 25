@@ -1,0 +1,85 @@
+
+ Web Slip 25 
+Q.1) Write a menu driven program to perform various file operations. Accept filename from user. [15] 
+a) Display type of file. 
+b) Display last modification time of file 
+c) Display the size of file 
+d) Delete the file 
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>File Operations</title> 
+</head> 
+<body> 
+<h2>File Operations</h2> 
+<form method="post" action=""> 
+<label for="filename">Enter the filename:</label> 
+<input type="text" name="filename" required><br> 
+<label for="operation">Choose an operation:</label> 
+<select name="operation" required> 
+<option value="displayType">Display type of file</option> 
+<option value="displayModificationTime">Display last modification time of file</option> 
+<option value="displaySize">Display size of file</option> 
+<option value="deleteFile">Delete the file</option> 
+</select><br> 
+<button type="submit" name="performOperation">Perform Operation</button> 
+</form> 
+<?php 
+if (isset($_POST['performOperation'])) { 
+// Get filename and operation from the form 
+$filename = $_POST['filename']; 
+$operation = $_POST['operation']; 
+// Check if the file exists 
+if (!file_exists($filename)) { 
+echo "<p>Error: The file '$filename' does not exist.</p>"; 
+} else { 
+// Perform the selected operation 
+switch ($operation) { 
+case 'displayType': 
+$fileType = mime_content_type($filename); 
+echo "<p>Type of file '$filename': $fileType</p>"; 
+break; 
+case 'displayModificationTime': 
+$modificationTime = date("F d Y H:i:s.", filemtime($filename)); 
+echo "<p>Last modification time of file '$filename': $modificationTime</p>"; 
+break; 
+case 'displaySize': 
+$fileSize = filesize($filename); 
+echo "<p>Size of file '$filename': $fileSize bytes</p>"; 
+break; 
+case 'deleteFile': 
+unlink($filename); 
+echo "<p>File '$filename' has been successfully deleted.</p>"; 
+break; 
+default: 
+echo "<p>Error: Invalid operation selected.</p>"; 
+break; 
+} 
+} 
+} 
+?> 
+</body> 
+</html> 
+Q.2 A) Generate a random array of 50 integers and display them using a line chart, scatter plot, histogram and box plot. Apply appropriate color, labels and styling options. 
+import numpy as np 
+import matplotlib.pyplot as plt 
+randnums = np.random.randint(0, 100, 50) 
+plt.plot(randnums, color='red') 
+plt.title('Line Chart of Random Integers') 
+plt.xlabel('Index') 
+plt.ylabel('Value') 
+plt.show() 
+plt.scatter(range(len(randnums)), randnums, color='green') 
+plt.title('Scatter Plot of Random Integers') 
+plt.xlabel('Index') 
+plt.ylabel('Value') 
+plt.show() 
+Q.2 B) Create two lists, one representing subject names and the other representing marks obtained in those subjects. Display the data in a pie chart. 
+import matplotlib.pyplot as plt 
+subjects = ['Math', 'Science', 'English', 'History'] 
+marks = [80, 90, 70, 85] 
+plt.pie(marks, labels=subjects, autopct='%1.1f%%') 
+plt.title('Marks Obtained in Different Subjects') 
+plt.show()
