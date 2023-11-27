@@ -1,0 +1,87 @@
+
+ Web Slip 12 
+Q.1) Write a PHP script for the following: Design a form to accept two numbers from the user. Give options to choose the arithmetic operation (use radio buttons). Display the result on the next form. (Use the concept of function and default parameters. Use ‘include’ construct or require statement) 
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<title>Arithmetic Operations</title> 
+</head> 
+<body> 
+<form action="2num_arithm.php" method="post"> 
+<label for="num1">Enter the first number:</label> 
+<input type="text" id="num1" name="num1" required> 
+<label for="num2">Enter the second number:</label> 
+<input type="text" id="num2" name="num2" required> 
+<p>Select an operation:</p> 
+<input type="radio" id="addition" name="operation" value="addition" checked> 
+<label for="addition">Addition</label> 
+<input type="radio" id="subtraction" name="operation" value="subtraction"> 
+<label for="subtraction">Subtraction</label> 
+<input type="radio" id="multiplication" name="operation" value="multiplication"> 
+<label for="multiplication">Multiplication</label> 
+<input type="radio" id="division" name="operation" value="division"> 
+<label for="division">Division</label> 
+<button type="submit">Submit</button> 
+</form> 
+</body> 
+</html> 
+<?php 
+function performOperation($num1, $num2, $operation = 'addition') { 
+switch ($operation) { 
+case 'addition': 
+return $num1 + $num2; 
+case 'subtraction': 
+return $num1 - $num2; 
+case 'multiplication': 
+return $num1 * $num2; 
+case 'division': 
+return ($num2 != 0) ? ($num1 / $num2) : "Cannot divide by zero"; 
+default: 
+return "Invalid operation"; 
+} 
+} 
+if ($_SERVER["REQUEST_METHOD"] == "POST") { 
+$num1 = $_POST["num1"]; 
+$num2 = $_POST["num2"]; 
+$operation = isset($_POST["operation"]) ? $_POST["operation"] : 'addition'; 
+$result = performOperation($num1, $num2, $operation); 
+echo "The result of the operation is:".$result; 
+} 
+?> 
+Q.2 A) Generate a random array of 50 integers and display them using a line chart, scatter plot, histogram and box plot. Apply appropriate color, labels and styling options. 
+import numpy as np 
+import matplotlib.pyplot as plt 
+randnums = np.random.randint(0, 100, 50) 
+plt.plot(randnums, color='red') 
+plt.title('Line Chart of Random Integers') 
+plt.xlabel('Index') 
+plt.ylabel('Value') 
+plt.show() 
+plt.scatter(range(len(randnums)), randnums, color='green') 
+plt.title('Scatter Plot of Random Integers') 
+plt.xlabel('Index') 
+plt.ylabel('Value') 
+plt.show() 
+plt.hist(randnums, color='blue', bins=10) 
+plt.title('Histogram of Random Integers') 
+plt.xlabel('Value') 
+plt.ylabel('Frequency') 
+plt.show() 
+plt.boxplot(randnums, vert=False) 
+plt.title('Box Plot of Random Integers') 
+plt.xlabel('Value') 
+plt.show() 
+Q.2 B) Write a Python program to create data frame containing column name, salary, department add 10 rows with some missing and duplicate values to the data frame. Also drop all null and empty values. Print the modified data frame. 
+import pandas as pd 
+import numpy as np 
+# Create a data frame containing column name, salary, department 
+df = pd.DataFrame(columns=['name', 'salary', 'department']) 
+for i in range(10): 
+name = f'Employee {i+1}' 
+salary = np.random.randint(1000, 5000) 
+department = np.random.choice(['Sales', 'Marketing', 'Finance', 'IT']) 
+df = df.append({'name': name, 'salary': salary, 'department':department},ignore_index=True) 
+if i % 2 == 0: 
+df=df.append({'name':name,'salary':np.nan,'department':department},ignore_indeTrue) 
+df.dropna(inplace=True) 
+print(df)
